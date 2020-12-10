@@ -1,22 +1,27 @@
 import "./App.css";
 import Card from "./components/card/Card";
 import { useEffect, useState } from "react";
+import Home from "./components/home/Home";
 
 function App() {
   //Buat penampung data dengan State
   const [comment, setComment] = useState();
 
-  //kita buat ketika load mengambil data dari api
+  //LIFE CYCLE
   useEffect(() => {
-    fetch("https://d307e246c9f1.ngrok.io/contact", {
+    //kita buat ketika load mengambil data dari api
+    fetch("https://1d34e61ddd7b.ngrok.io/contact", {
       method: "GET",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
+        //kita simpan hasil fetch ke dalam comment
         setComment(data);
       });
   }, []);
@@ -24,17 +29,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="head_title">Jvalley comment</h1>
-
-      {/* KITA BUAT CONDITIONAL RENDERING */}
-      {comment ? (
-        <>
-          {comment.map((e) => {
-            return <Card from={e.from} message={e.message} date={e.date} />;
-          })}
-        </>
-      ) : (
-        <small>W a i t . . </small>
-      )}
+      {console.log(comment)}
     </div>
   );
 }
