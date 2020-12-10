@@ -1,0 +1,12 @@
+.card {
+  width: calc(90% / 3);
+  height: 120px;
+  padding: 20px;
+  background-color: wheat;
+  box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.2);
+  transition-duration: 0.5s;
+}
+
+.card:hover {
+  box-shadow: 2px 8px 5px rgba(0, 0, 0, 0.2);
+}
